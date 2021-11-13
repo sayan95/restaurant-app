@@ -1,5 +1,4 @@
-import { templateJitUrl } from "@angular/compiler";
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 
 @Component({
     selector: "coffeco-header",
@@ -7,5 +6,9 @@ import { Component } from "@angular/core";
     styleUrls: ["./header.component.css"]
 })
 export class HeaderComponent{
+    @Output() featureSelected = new EventEmitter<string>();
 
+    onSelect(feature: string){
+        this.featureSelected.emit(feature);
+    }
 }
