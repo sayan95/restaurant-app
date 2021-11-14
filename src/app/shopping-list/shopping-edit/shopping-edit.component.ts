@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { Ingridient } from 'src/app/shared/ingridient.model';
+import { Ingridient } from 'src/app/shared/models/ingridient.model';
 
 @Component({
   selector: 'coffeco-shopping-edit',
