@@ -6,7 +6,6 @@ import { ShoppingListService } from './shoppinglist.service';
   selector: 'coffeco-shopping-list',
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css'],
-  providers: [ShoppingListService]
 })
 export class ShoppingListComponent implements OnInit {
   ingridients: Ingridient[] = [];

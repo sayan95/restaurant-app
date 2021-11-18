@@ -22,7 +22,7 @@
                 Manage Recipe
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a href="#" class="dropdown-item">Add ingridient to shopping list</a></li>
+                <li><a (click)="OnAddToShoppingList()" class="dropdown-item" style="cursor: pointer;">Add ingridient to shopping list</a></li>
                 <li><a href="#" class="dropdown-item">Edit recipe</a></li>
                 <li><a href="#" class="dropdown-item">Delete recipe</a></li>
             </ul>
@@ -40,7 +40,15 @@
 <!-- Ingridient list -->
 <div class="row">
     <div class="col-xs-12">
-        Ingridents
+        <ul class="list-group">
+            <li 
+                class="list-group-item d-flex justify-content-between align-items-center"
+                *ngFor="let ingridient of recipe.ingridients"
+            >
+                {{ ingridient.name }}
+                <span class="badge bg-primary rounded-pill">{{ ingridient.amount }}</span>
+            </li>
+        </ul>
     </div>
 </div>
 

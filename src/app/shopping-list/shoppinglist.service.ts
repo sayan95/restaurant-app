@@ -7,6 +7,7 @@ export class ShoppingListService {
         new Ingridient("Apple", 5),
         new Ingridient("Banana", 2),
         new Ingridient("Chocolate", 1),
+        new Ingridient("Meat", 3),
     ];
 
     ingridientChanged = new EventEmitter<Ingridient[]>();
@@ -26,4 +27,9 @@ export class ShoppingListService {
         this.ingridients.push(ingridient);
         this.ingridientChanged.emit(this.getIngridients());
     }    
+
+    addIngridients(ingridients: Ingridient[]){
+        this.ingridients.push(...ingridients);
+        this.ingridientChanged.emit(this.getIngridients());
+    }
 }
