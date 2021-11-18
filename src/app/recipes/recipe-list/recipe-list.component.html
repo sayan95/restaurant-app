@@ -12,7 +12,6 @@
             <coffeco-recipe-item 
                 *ngFor="let recipe of recipes"
                 [recipeItem] = "recipe"
-                (recipeSelected)="onRecipeSelected(recipe)"
             ></coffeco-recipe-item>
         </div>
     </div>
