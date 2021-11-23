@@ -1,0 +1,18 @@
+<!-- recipe list items here -->
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-sm btn-success">New Recipe</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="list-group">
+            <!-- yummy recipes -->
+            <coffeco-recipe-item ngClass="mb-1 rounded shadow-sm"
+                *ngFor="let recipe of recipes"
+                [recipeItem] = "recipe"
+            ></coffeco-recipe-item>
+        </div>
+    </div>
+</div>
