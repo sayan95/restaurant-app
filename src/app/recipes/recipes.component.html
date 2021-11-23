@@ -4,14 +4,7 @@
         <coffeco-recipe-list></coffeco-recipe-list>
     </div>
     <div class="col-md-7">
-        <!-- recipe details component -->
-        <coffeco-recipe-details 
-            *ngIf="loadedRecipe; else infoText"
-            [recipeItem]="loadedRecipe"
-        ></coffeco-recipe-details>
-        <ng-template #infoText>
-            <p>Please select a Recipe!</p>
-        </ng-template>
+        <router-outlet></router-outlet>
     </div>
 </div>
 
