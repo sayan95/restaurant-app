@@ -1,16 +1,17 @@
 import { EventEmitter, Injectable } from "@angular/core";
 import { Ingridient } from "../shared/models/ingridient.model";
+import { Subject } from "rxjs";
 
 @Injectable({providedIn: "root"})
 export class ShoppingListService {
     private ingridients: Ingridient[] = [
-        new Ingridient("Apple", 5),
-        new Ingridient("Banana", 2),
-        new Ingridient("Chocolate", 1),
-        new Ingridient("Meat", 3),
+        // new Ingridient("Apple", 5),
+        // new Ingridient("Banana", 2),
+        // new Ingridient("Chocolate", 1),
+        // new Ingridient("Meat", 3),
     ];
 
-    ingridientChanged = new EventEmitter<Ingridient[]>();
+    ingridientChanged = new Subject<Ingridient[]>();
     
     getIngridients(){
         return this.ingridients.slice().sort((a, b) => {
@@ -25,11 +26,11 @@ export class ShoppingListService {
 
     addIngridient(ingridient: Ingridient){
         this.ingridients.push(ingridient);
-        this.ingridientChanged.emit(this.getIngridients());
+        this.ingridientChanged.next(this.getIngridients());
     }    
 
     addIngridients(ingridients: Ingridient[]){
         this.ingridients.push(...ingridients);
-        this.ingridientChanged.emit(this.getIngridients());
+        this.ingridientChanged.next(this.getIngridients());
     }
 }
