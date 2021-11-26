@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+.form-control:focus{
+    border: 1px solid rgba(105, 163, 255, 0.835);
+}
+.form-control.ng-valid.ng-touched{
+    border: 1px solid rgb(24, 194, 24);
+}
+.form-control.ng-invalid.ng-touched{
+    border: 1px solid rgb(221, 68, 68);
+}
+
+.form-control:focus{
+    box-shadow: none!important;
+}

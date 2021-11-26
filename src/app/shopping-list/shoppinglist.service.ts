@@ -4,33 +4,36 @@ import { Subject } from "rxjs";
 
 @Injectable({providedIn: "root"})
 export class ShoppingListService {
-    private ingridients: Ingridient[] = [
-        // new Ingridient("Apple", 5),
-        // new Ingridient("Banana", 2),
-        // new Ingridient("Chocolate", 1),
-        // new Ingridient("Meat", 3),
-    ];
+    private ingridients: Ingridient[] = [];
 
     ingridientChanged = new Subject<Ingridient[]>();
+    startedEditing = new Subject<number>();
     
-    getIngridients(){
-        return this.ingridients.slice().sort((a, b) => {
-            if(a.amount < b. amount)
-                return -1;
-            if(a.amount > b. amount)
-                return 1;
-            else
-                return 0;
-        });
+    getIngridients(): Ingridient[]{
+        return this.ingridients.slice();
     }
 
-    addIngridient(ingridient: Ingridient){
+    getIngridient(id: number): Ingridient{
+        return this.ingridients[id];
+    }
+
+    addIngridient(ingridient: Ingridient): void{
         this.ingridients.push(ingridient);
         this.ingridientChanged.next(this.getIngridients());
     }    
 
-    addIngridients(ingridients: Ingridient[]){
+    addIngridients(ingridients: Ingridient[]): void{
         this.ingridients.push(...ingridients);
+        this.ingridientChanged.next(this.getIngridients());
+    }
+    
+    updateIngridient(id: number, updatedIngridient: Ingridient): void{
+        this.ingridients[id] = updatedIngridient;
+        this.ingridientChanged.next(this.getIngridients());
+    }
+
+    deleteIngridient(id: number): void{
+        this.ingridients.splice(id, 1);
         this.ingridientChanged.next(this.getIngridients());
     }
 }
