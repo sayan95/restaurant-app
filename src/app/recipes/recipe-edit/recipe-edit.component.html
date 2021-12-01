@@ -1,3 +1,64 @@
-<p>
-  recipe-edit works!
-</p>
+<div class="container" style="max-height: 75%; overflow-y: scroll;">
+  <div class="row">
+    <div class="col-sm-12">
+      <form>
+        <!-- recipe control buttons  -->
+        <div class="row">
+          <div class="col-sm-12">
+            <coffeco-button-group class="float-end">
+              <coffeco-button type="submit" color="success">Save</coffeco-button>
+              <coffeco-button type="submit" color="danger">Cancel</coffeco-button>
+            </coffeco-button-group>
+          </div>
+        </div>
+  
+        <!-- recipe form controls -->
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="container p-3">
+              
+              <coffeco-text-control
+                label="Recipe name"
+                name="name"
+                placeholder="Enter recipe name"
+              ></coffeco-text-control>
+  
+              <div class="row">
+                <div class="col-sm-12">
+                  <img src="" class="img-fluid"/>
+                  <coffeco-text-control type="url"
+                    label="Recipe image url"
+                    placeholder="Enter image url"
+                  ></coffeco-text-control>
+                </div>
+              </div>
+  
+              <coffeco-text-area
+                label="Recipe description"
+                name="description"
+                rows="6"
+                placeholder="Enter recipe description.."
+              ></coffeco-text-area>
+              <hr>
+  
+              <div class="container p-0">
+                <h5>Ingridient details</h5>
+              </div>
+              <div class="row">
+                <div class="col-sm-7">
+                  <coffeco-text-control placeholder="Enter ingridient name"></coffeco-text-control>
+                </div>
+                <div class="col-sm-3">
+                  <coffeco-text-control type="number" placeholder="amount"></coffeco-text-control>
+                </div>
+                <div class="col-sm-2">
+                  <coffeco-button type="button" color="danger" class="btn-lg mt-2">X</coffeco-button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

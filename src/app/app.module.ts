@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // app component
 import { AppComponent } from './app.component';
@@ -12,6 +12,11 @@ import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-it
 import ShoppingListComponent from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { AppRoutingModule } from './routing/app.routing.module';
+import { TextControlComponent } from './shared/controls/text-control/text-control.component';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { ButtonComponent } from './shared/controls/button/button.component';
+import { ButtonGroupComponent } from './shared/controls/button-group/button-group.component';
+import { TextAreaComponent } from './shared/controls/text-area/text-area.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +26,20 @@ import { AppRoutingModule } from './routing/app.routing.module';
     RecipeListComponent,
     RecipeDetailsComponent,
     RecipeItemComponent,
+    RecipeEditComponent,
     ShoppingListComponent,
-    ShoppingEditComponent
+    ShoppingEditComponent,
+    TextControlComponent,
+    ButtonComponent,
+    ButtonGroupComponent,
+    TextAreaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

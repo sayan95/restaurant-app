@@ -12,3 +12,7 @@
 .form-control:focus{
     box-shadow: none!important;
 }
+
+.form-group{
+    margin-bottom: 20px;
+}
