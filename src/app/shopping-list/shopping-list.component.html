@@ -19,9 +19,9 @@
                     *ngFor="let ingridient of ingridients; let i=index"
                     (click)="onEditItem(i)"
                 >
-                    {{ ingridient.name }}
+                    {{ ingridient.ingridientName }}
                     <span class="badge bg-primary rounded-pill">
-                    {{ ingridient.amount }}
+                    {{ ingridient.ingridientAmount }}
                     </span>
                 </li>
             </ng-template>

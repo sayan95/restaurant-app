@@ -11,8 +11,8 @@ export class RecipeEditFormGroup {
         if(recipe && recipe['ingridients']){
             for(let ingridient of recipe.ingridients){
                 recipeIngridients.push(this.fb.group({
-                    'ingridientName': [ingridient.name, Validators.required],
-                    'ingridientAmount': [ingridient.amount, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)]]
+                    'ingridientName': [ingridient.ingridientName, Validators.required],
+                    'ingridientAmount': [ingridient.ingridientAmount, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)]]
                 }))
             }
         }
@@ -38,6 +38,16 @@ export class RecipeEditFormGroup {
                 'ingridientAmount': ['', [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)]]
             })
         )
+        return this.recipeEditForm;
+    }
+
+    public static deleteIngridientControl(index: number): FormGroup{
+        (<FormArray>this.recipeEditForm.get('recipeIngridients')).removeAt(index);
+        return this.recipeEditForm;
+    }
+
+    public static clearAllIngridientControl(): FormGroup{
+        (<FormArray>this.recipeEditForm.get('recipeIngridients')).clear();
         return this.recipeEditForm;
     }
 }

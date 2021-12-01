@@ -1,10 +1,10 @@
 // shared ingridient model
 export class Ingridient{
-    public name: string;
-    public amount: number;
+    public ingridientName: string;
+    public ingridientAmount: number;
 
     constructor(name:string, amount:number){
-        this.name = name;
-        this.amount = amount;
+        this.ingridientName = name;
+        this.ingridientAmount = amount;
     }
 }

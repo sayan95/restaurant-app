@@ -21,7 +21,7 @@
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a (click)="OnAddToShoppingList()" class="dropdown-item">Add ingridient to shopping list</a></li>
                 <li><a (click)="onNavigateToEdit()" class="dropdown-item">Edit recipe</a></li>
-                <li><a  class="dropdown-item">Delete recipe</a></li>
+                <li><a  class="dropdown-item" (click)="onDelete()" >Delete recipe</a></li>
             </ul>
         </div>
     </div>
@@ -41,8 +41,8 @@
                         class="list-group-item d-flex justify-content-between align-items-center"
                         *ngFor="let ingridient of recipe.ingridients"
                     >
-                        {{ ingridient.name }}
-                        <span class="badge bg-primary rounded-pill">{{ ingridient.amount }}</span>
+                        {{ ingridient.ingridientName }}
+                        <span class="badge bg-primary rounded-pill">{{ ingridient.ingridientAmount }}</span>
                     </li>
                 </ul>
             </div>

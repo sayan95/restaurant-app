@@ -8,7 +8,7 @@
           <div class="col-sm-12">
             <div class="btn-group btn-group-sm float-end">
               <button type="submit" class="btn btn-success" [disabled]="recipeEditForm.invalid">Save</button>
-              <button type="button" class="btn btn-danger">Cancel</button>
+              <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
             </div>
           </div>
         </div>
@@ -30,7 +30,7 @@
 
               <div class="row">
                 <div class="col-sm-12">
-                  <img src="" class="img-fluid" />
+                  <img [src]="imagePath.value" class="img-fluid" style="height:120px; width: 150px" />
                   <div class="form-group">
                     <label for="">Recipe Image</label>
                     <input
@@ -38,6 +38,7 @@
                       class="form-control"
                       formControlName="recipeImagePath"
                       placeholder="Enter image url"
+                      #imagePath
                     />
                     <coffeco-error control="recipeImagePath" [errorFormGroup]="recipeEditForm"></coffeco-error>
                   </div>
@@ -116,7 +117,11 @@
                           </td>
                           <td class="text-center">
                             <div class="form-group">
-                              <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                              <button 
+                                type="button" 
+                                class="btn btn-danger btn-sm"
+                                (click)="onDeleteIngridient(i)"
+                              >Delete</button>
                             </div>
                           </td>
                         </tr>
@@ -128,8 +133,9 @@
                 <!-- New infridient add control -->
                 <div class="row" *ngIf="recipeIngridients.length > 0">
                   <div class="col-sm-12">
-                    <div class="form-group">
+                    <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-success" (click)="onAddIngridient()">Add Ingridient</button>
+                      <button type="button" class="btn btn-sm btn-danger" (click)="onClearAllIngridients()">Clear all</button>
                     </div>
                   </div>
                 </div>

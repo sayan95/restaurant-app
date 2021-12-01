@@ -6,12 +6,12 @@
     "imagePath": "https://www.simplyrecipes.com/thmb/OCi18J2V8OeKDFV3FxoeKvgq74E=/1423x1067/smart/filters:no_upscale()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2012__07__grilled-sweet-potatoes-horiz-a-1600-7c8292daa98e4020b447f0dc97a45cb7.jpg",
     "ingridients": [
       {
-        "name": "Milk",
-        "amount": 5
+        "ingridientName": "Milk",
+        "ingridientAmount": 5
       },
       {
-        "name": "Chocolate",
-        "amount": 2
+        "ingridientName": "Chocolate",
+        "ingridientAmount": 2
       }
     ]
   },
@@ -22,16 +22,16 @@
     "imagePath": "https://www.simplyrecipes.com/thmb/OCi18J2V8OeKDFV3FxoeKvgq74E=/1423x1067/smart/filters:no_upscale()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2012__07__grilled-sweet-potatoes-horiz-a-1600-7c8292daa98e4020b447f0dc97a45cb7.jpg",
     "ingridients": [
       {
-        "name": "Milk",
-        "amount": 5
+        "ingridientName": "Milk",
+        "ingridientAmount": 5
       },
       {
-        "name": "Chocolate",
-        "amount": 2
+        "ingridientName": "Chocolate",
+        "ingridientAmount": 2
       },
       {
-        "name": "Banana",
-        "amount": 5
+        "ingridientName": "Banana",
+        "ingridientAmount": 5
       }
     ]
   },
@@ -42,8 +42,8 @@
     "imagePath": "https://media.istockphoto.com/photos/assorted-indian-recipes-food-various-picture-id922783734?k=20&m=922783734&s=612x612&w=0&h=_oV4oOrb8kC4RVgAI6RrGfQ8lIKsnP89lwwjHfhxUzQ=",
     "ingridients": [
       {
-        "name": "Milk",
-        "amount": 5
+        "ingridientName": "Milk",
+        "ingridientAmount": 5
       }
     ]
   },
@@ -54,16 +54,16 @@
     "imagePath": "https://www.prameyanews.com/wp-content/uploads/2020/07/authentic-chicken-biryani-50434132.jpg",
     "ingridients": [
       {
-        "name": "Milk",
-        "amount": 5
+        "ingridientName": "Milk",
+        "ingridientAmount": 5
       },
       {
-        "name": "Chocolate",
-        "amount": 2
+        "ingridientName": "Chocolate",
+        "ingridientAmount": 2
       },
       {
-        "name": "Peanuts",
-        "amount": 100
+        "ingridientName": "Peanuts",
+        "ingridientAmount": 100
       },
       {
         "name": "Curd",
@@ -78,12 +78,12 @@
     "imagePath": "https://wallpapercave.com/wp/wp3063126.jpg",
     "ingridients": [
       {
-        "name": "Milk",
-        "amount": 5
+        "ingridientName": "Milk",
+        "ingridientAmount": 5
       },
       {
-        "name": "Chocolate",
-        "amount": 2
+        "ingridientName": "Chocolate",
+        "ingridientAmount": 2
       }
     ]
   }

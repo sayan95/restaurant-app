@@ -1,11 +1,12 @@
 import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
 import { Ingridient } from "../shared/models/ingridient.model";
 import { ShoppingListService } from "../shopping-list/shoppinglist.service";
 import { Recipe } from "./models/recipe.model";
 
 import dummyRecipes from './recipes.json';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class RecipeService {
 
   constructor(private shoppingListService: ShoppingListService){}
@@ -35,15 +36,35 @@ export class RecipeService {
 
   private recipes: Recipe[] = dummyRecipes;
 
-  getRecipes(){
+  recipeChanged: Subject<Recipe[]> = new Subject<Recipe[]>();
+
+  getRecipes(): Recipe[]{
     return this.recipes.slice();
   }
 
-  getRecipe(id: number){
+  getRecipe(id: number): Recipe{
     return this.recipes.find(s => s.id == id);
   }
 
-  addIngridientsToShoppingList(ingridients: Ingridient[]){
+  addIngridientsToShoppingList(ingridients: Ingridient[]): void{
     this.shoppingListService.addIngridients(ingridients);
+  }
+
+  addRecipe(recipe: Recipe): void {
+    this.recipes.push(recipe);
+    this.recipeChanged.next(this.getRecipes());
+  }
+
+  updateRecipe(id: number, newRecipe: Recipe): void{
+    console.log(this.recipes)
+    const index = this.recipes.findIndex(r => id);
+    this.recipes[index] = newRecipe;
+    this.recipeChanged.next(this.getRecipes());
+  }
+
+  deleteRecipe(id: number): void{
+    const recipe = this.recipes.findIndex(r => r.id == id);
+    this.recipes.splice(recipe, 1);
+    this.recipeChanged.next(this.getRecipes());
   }
 }

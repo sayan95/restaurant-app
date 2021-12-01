@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { RecipeformMapper } from 'src/app/shared/mappers/recipe-form-mapper';
 import { RecipeEditFormGroup } from '../form-groups/recipe-edit-form-group';
 import { Recipe } from '../models/recipe.model';
 import { RecipeService } from '../recipe.service';
@@ -18,7 +19,8 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   recipeEditForm: FormGroup;
 
   constructor(private route: ActivatedRoute,
-              private recipeService: RecipeService){ }
+              private recipeService: RecipeService,
+              private router: Router){ }
 
   ngOnInit(): void {
     this.routeParamSubscription = this.route.params.subscribe(
@@ -36,7 +38,20 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
 
 
   onSubmit(): void{
-    console.log(this.recipeEditForm);
+    if(this.isEditModeOn){
+      const recipe = RecipeformMapper.map(this.id, this.recipeEditForm)
+      this.recipeService.updateRecipe(this.id, recipe);
+    }else{
+      const recipe = RecipeformMapper.map(
+        (this.recipeService.getRecipes().length) + 1,
+        this.recipeEditForm)
+      this.recipeService.addRecipe(recipe);
+    }
+    this.onCancel();
+  } 
+
+  onCancel(): void{
+    this.router.navigate(['../'], {relativeTo: this.route});
   }
 
   private initForm(): void {
@@ -47,10 +62,17 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     this.recipeEditForm = RecipeEditFormGroup.initForm(recipe);
   }
 
-  onAddIngridient(){
+  onAddIngridient(): void{
     this.recipeEditForm = RecipeEditFormGroup.addIngridientControl();
   }
 
+  onDeleteIngridient(index: number): void{
+    this.recipeEditForm = RecipeEditFormGroup.deleteIngridientControl(index);
+  }
+
+  onClearAllIngridients(): void{
+    this.recipeEditForm = RecipeEditFormGroup.clearAllIngridientControl();
+  }
 
   ngOnDestroy(){
     this.routeParamSubscription.unsubscribe();

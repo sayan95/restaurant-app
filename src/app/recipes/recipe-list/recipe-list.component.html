@@ -8,6 +8,11 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="list-group">
+            <a 
+                *ngIf="recipes.length === 0"
+                class="list-group-item">
+                Oops! no recipes there
+            </a> 
             <!-- yummy recipes -->
             <coffeco-recipe-item ngClass="mb-1 rounded shadow-sm"
                 *ngFor="let recipe of recipes"
