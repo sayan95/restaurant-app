@@ -1,63 +1,143 @@
-<div class="container" style="max-height: 75%; overflow-y: scroll;">
+<div class="container" style="max-height: 90%; overflow-y: scroll">
   <div class="row">
     <div class="col-sm-12">
-      <form>
+      <form [formGroup]="recipeEditForm" (ngSubmit)="onSubmit()">
+        
         <!-- recipe control buttons  -->
         <div class="row">
           <div class="col-sm-12">
-            <coffeco-button-group class="float-end">
-              <coffeco-button type="submit" color="success">Save</coffeco-button>
-              <coffeco-button type="submit" color="danger">Cancel</coffeco-button>
-            </coffeco-button-group>
+            <div class="btn-group btn-group-sm float-end">
+              <button type="submit" class="btn btn-success" [disabled]="recipeEditForm.invalid">Save</button>
+              <button type="button" class="btn btn-danger">Cancel</button>
+            </div>
           </div>
         </div>
-  
+
         <!-- recipe form controls -->
         <div class="row">
           <div class="col-sm-12">
             <div class="container p-3">
-              
-              <coffeco-text-control
-                label="Recipe name"
-                name="name"
-                placeholder="Enter recipe name"
-              ></coffeco-text-control>
-  
+              <div class="form-group">
+                <label for="">Recipe name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="recipeName"
+                  placeholder="Enter recipe name"
+                />
+                <coffeco-error control="recipeName" [errorFormGroup]="recipeEditForm"></coffeco-error>
+              </div>
+
               <div class="row">
                 <div class="col-sm-12">
-                  <img src="" class="img-fluid"/>
-                  <coffeco-text-control type="url"
-                    label="Recipe image url"
-                    placeholder="Enter image url"
-                  ></coffeco-text-control>
+                  <img src="" class="img-fluid" />
+                  <div class="form-group">
+                    <label for="">Recipe Image</label>
+                    <input
+                      type="url"
+                      class="form-control"
+                      formControlName="recipeImagePath"
+                      placeholder="Enter image url"
+                    />
+                    <coffeco-error control="recipeImagePath" [errorFormGroup]="recipeEditForm"></coffeco-error>
+                  </div>
                 </div>
               </div>
-  
-              <coffeco-text-area
-                label="Recipe description"
-                name="description"
-                rows="6"
-                placeholder="Enter recipe description.."
-              ></coffeco-text-area>
+              
+              <div class="form-group">
+                <label for="">Recipe description</label>
+                <textarea
+                  rows="6"
+                  class="form-control"
+                  formControlName="recipeDescription"
+                  placeholder="Enter recipe description.."
+                ></textarea>
+                <coffeco-error control="recipeDescription" [errorFormGroup]="recipeEditForm"></coffeco-error>
+              </div>
+              
               <hr>
-  
-              <div class="container p-0">
+              
+              <!-- Recipe ingridients -->
+              <div class="container p-0" >
                 <h5>Ingridient details</h5>
-              </div>
-              <div class="row">
-                <div class="col-sm-7">
-                  <coffeco-text-control placeholder="Enter ingridient name"></coffeco-text-control>
-                </div>
-                <div class="col-sm-3">
-                  <coffeco-text-control type="number" placeholder="amount"></coffeco-text-control>
-                </div>
-                <div class="col-sm-2">
-                  <coffeco-button type="button" color="danger" class="btn-lg mt-2">X</coffeco-button>
+                <div class="row">
+                  <div class="col-sm-12" formArrayName="recipeIngridients">
+                    <table class="table table-borderless">
+                      <thead>
+                        <th>Ingridient name</th>
+                        <th>Ingridient amount</th>
+                        <th>Ingridient actions</th>
+                      </thead>
+                      <tbody>
+                        <tr *ngIf="recipeIngridients.length == 0 ">
+                          <td colspan="3" class="text-center bg-light">
+                            <button type="button" class="btn btn-sm btn-success" (click)="onAddIngridient()">Add Ingridient</button>
+                          </td>
+                        </tr>
+                        <tr *ngFor="let recipeIngridient of recipeIngridients; let i=index"
+                          [formGroupName]="i"
+                        >
+                          <td>
+                            <div class="form-group">
+                              <input
+                                type="text"
+                                class="form-control"
+                                formControlName="ingridientName"
+                                placeholder="Enter ingridient name"
+                              />
+                              <div 
+                                *ngIf="recipeIngridient.get('ingridientName').invalid 
+                                && recipeIngridient.get('ingridientName').touched"
+                                class="small text-danger"  
+                              >Please enter ingridient name</div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="form-group">
+                              <input
+                                type="number"
+                                class="form-control"
+                                formControlName="ingridientAmount"
+                                placeholder="amount"
+                              />
+                              <div 
+                                *ngIf="recipeIngridient.get('ingridientAmount').invalid 
+                                && recipeIngridient.get('ingridientAmount').touched
+                                && recipeIngridient.get('ingridientAmount')?.errors['required']"
+                                class="small text-danger"  
+                              >Please enter ingridient amount</div>
+                              <div 
+                                *ngIf="recipeIngridient.get('ingridientAmount').invalid 
+                                && recipeIngridient.get('ingridientAmount').touched
+                                && recipeIngridient.get('ingridientAmount')?.errors['pattern']"
+                                class="small text-danger"  
+                              >Please enter valid ingridient amount</div>
+                            </div>
+                          </td>
+                          <td class="text-center">
+                            <div class="form-group">
+                              <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div> 
+                
+                <!-- New infridient add control -->
+                <div class="row" *ngIf="recipeIngridients.length > 0">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <button type="button" class="btn btn-sm btn-success" (click)="onAddIngridient()">Add Ingridient</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        
       </form>
     </div>
   </div>

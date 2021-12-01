@@ -1,0 +1,7 @@
+<div 
+    *ngIf="(errorFormGroup.get(control)?.invalid 
+        && errorFormGroup.get(control)?.touched) "
+    class="small text-danger"
+>
+{{ errorMessage }}
+</div>

@@ -40,7 +40,7 @@ export class RecipeService {
   }
 
   getRecipe(id: number){
-    return this.recipes.find(s => s.id === id);
+    return this.recipes.find(s => s.id == id);
   }
 
   addIngridientsToShoppingList(ingridients: Ingridient[]){

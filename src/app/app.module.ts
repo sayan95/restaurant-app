@@ -12,11 +12,9 @@ import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-it
 import ShoppingListComponent from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { AppRoutingModule } from './routing/app.routing.module';
-import { TextControlComponent } from './shared/controls/text-control/text-control.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
-import { ButtonComponent } from './shared/controls/button/button.component';
-import { ButtonGroupComponent } from './shared/controls/button-group/button-group.component';
-import { TextAreaComponent } from './shared/controls/text-area/text-area.component';
+import { ValidationMessageComponent } from './shared/controls/validation-message/validation-message.component';
+
 
 @NgModule({
   declarations: [
@@ -29,17 +27,13 @@ import { TextAreaComponent } from './shared/controls/text-area/text-area.compone
     RecipeEditComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
-    TextControlComponent,
-    ButtonComponent,
-    ButtonGroupComponent,
-    TextAreaComponent
+    ValidationMessageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
